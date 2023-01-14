@@ -1,5 +1,6 @@
 #include "debug.h"
 #include "tm1637.h"
+#include "my_delay.h"
 
 void GPIO_TM1637_INIT(void)
 {
@@ -17,12 +18,14 @@ void GPIO_TM1637_INIT(void)
 int main(void)
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
-    Delay_Init();
+
+    My_Delay_Init();
 
     GPIO_TM1637_INIT();
 
-    set_brightness(1);
+    set_brightness(7);
     clearDisplay();
+
     int8_t TimeDisp[4] = {0};
 
     uint8_t i = 0;
@@ -46,6 +49,6 @@ int main(void)
     		i=0;
     	}
 
-    	Delay_Ms(500);
+    	My_Delay_Ms(500);
     }
 }
