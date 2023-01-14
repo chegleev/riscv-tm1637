@@ -1,4 +1,5 @@
 #include "tm1637.h"
+#include "my_delay.h"
 
 uint8_t Cmd_DispCtrl = 0;
 uint8_t point_flag = 0;
@@ -16,19 +17,19 @@ void writeByte(int8_t wr_data)
     if(wr_data & 0x01) DIO_HIGH;
     else DIO_LOW;
 
-    Delay_Us(6);
+    My_Delay_Us(6);
     wr_data >>= 1;
-    Delay_Us(6);
+    My_Delay_Us(6);
     CLK_HIGH;
-    Delay_Us(8);
+    My_Delay_Us(8);
   }
 
   CLK_LOW;
-  Delay_Us(6);
+  My_Delay_Us(6);
   DIO_HIGH;
-  Delay_Us(6);
+  My_Delay_Us(6);
   CLK_HIGH;
-  Delay_Us(8);
+  My_Delay_Us(8);
 
   while(DIO_READ)
   {
@@ -45,22 +46,22 @@ void writeByte(int8_t wr_data)
 void start(void)
 {
 	CLK_HIGH;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	DIO_HIGH;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	DIO_LOW;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	CLK_LOW;
 }
 
 void stop(void)
 {
 	CLK_LOW;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	DIO_LOW;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	CLK_HIGH;
-	Delay_Us(6);
+	My_Delay_Us(6);
 	DIO_HIGH;
 }
 
