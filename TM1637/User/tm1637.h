@@ -1,5 +1,5 @@
-#ifndef TM1637_H_
-#define TM1637_H_
+#ifndef USER_TM1637_H_
+#define USER_TM1637_H_
 
 #include "ch32v30x.h"
 
@@ -34,4 +34,4 @@ void point(uint8_t cmd);
 void coding_mass(int8_t DispData[]);
 int8_t coding(int8_t DispData);
 
-#endif /* TM1637_H_ */
+#endif /* USER_TM1637_H_ */
